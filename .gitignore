@@ -1,0 +1,4 @@
+doc/Home.md
+venv
+*.pyc
+~*.*
