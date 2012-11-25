@@ -1,4 +1,7 @@
+.env
+Procfile
 doc/Home.md
 venv
 *.pyc
 ~*.*
+*.*~
