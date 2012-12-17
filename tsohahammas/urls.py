@@ -22,6 +22,6 @@ urlpatterns = patterns('',
     #url(r'^login/$', LoginView.as_view(template_name = 'login.html'), name="login"),
     url(r'^(index.html|index|$)', index.Index.as_view()),
     url(r'^login/$', LoginView.as_view(template_name = 'login.html', success_url='/index.html'), name='login'),
-    url(r'^logout/','django.contrib.auth,views.logout',{'next_page': '/'},name='logout'),
+    url(r'^logout/','django.contrib.auth.views.logout',{'next_page': '/'},name='logout'),
     url(r'^admin/', include(admin.site.urls)),
 )

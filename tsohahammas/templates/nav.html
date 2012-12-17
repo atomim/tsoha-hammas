@@ -1,7 +1,10 @@
 <nav>
      <ul>
           {{ user }}
-          {{ user.is_authenticated }}
-	     <li><a href="/login/">kirjaudu</a></li>
+          {% if user.is_authenticated %}
+               <li><a href="/logout/">kirjaudu ulos</a></li>
+          {% else %}
+	          <li><a href="/login/">kirjaudu</a></li>
+	     {% endif %}
 	</ul>
 </nav>
