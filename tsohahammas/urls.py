@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from tsohahammas.views import *
 from django.views.generic import TemplateView
+from class_based_auth_views.views import LoginView
 
 
 # Uncomment the next two lines to enable the admin:
@@ -18,6 +19,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     
     #url(r'^login/', LoginView.asView()),
-    url(r'^(index.html|)', TemplateView.as_view(template_name='index.html')),
+    #url(r'^login/$', LoginView.as_view(template_name = 'login.html'), name="login"),
+    url(r'^(index.html|index|$)', index.Index.as_view()),
+    url(r'^login/$', LoginView.as_view(template_name = 'login.html', success_url='/index.html'), name='login'),
+    url(r'^logout/','django.contrib.auth,views.logout',{'next_page': '/'},name='logout'),
     url(r'^admin/', include(admin.site.urls)),
 )
