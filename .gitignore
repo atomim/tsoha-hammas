@@ -1,6 +1,7 @@
 .env
 Procfile
 doc/Home.md
+*/media/*
 venv
 *.pyc
 ~*.*
