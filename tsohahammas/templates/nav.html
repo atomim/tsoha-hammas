@@ -3,10 +3,11 @@
 		<li><a href={% url index %}>julkiset ryhmät</a></li>
 		<li><a href={% url admin:index %}>admin panel(temporary)</a></li>
 		{% if user.is_authenticated %}
+		<li><a>omat ryhmät</a></li>
 		<li><a href={% url logout %}>kirjaudu ulos({{ user }})</a></li>
 		{% else %}
 		<li><a href={% url login %}>kirjaudu</a></li>
-		<li><a href=>rekisteröidy</a></li>
+		<li><a>rekisteröidy</a></li>
 		{% endif %}
 	</ul>
 </nav>
