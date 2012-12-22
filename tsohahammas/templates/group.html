@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 
+{% block nav %}
+	{% if not memberStatus %}
+	<li><a href=>liity</a></li>
+	{% else %}
+	<li><a href=>lisää näyte!</a></li>
+	<li><a href=>eroa ryhmästä</a></li>
+	{% endif %}
+{% endblock %}
 
 {% block content %}
-		<a href={{model.get_absolute_url}}>
 		<article>
 			<h1>{{group.name}}</h1>
+			{% if memberStatus %}
+			<p>kuulut ryhmään.</p>
+			{% endif %}
 			<p>{{group.description}}</p>
-		</article>	
-		</a>
+		</article>
 {% endblock %}
