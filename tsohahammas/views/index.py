@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*- 
 
-from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import ListView
 from utils import *
 from tsohahammas.models import *
 

@@ -2,13 +2,10 @@
 
 
 {% block content %}
-	{% for group in object_list %}
-		<a href={{group.get_absolute_url}}>
+		<a href={{model.get_absolute_url}}>
 		<article>
 			<h1>{{group.name}}</h1>
 			<p>{{group.description}}</p>
 		</article>	
-		</a>	
-	{% endfor %}
+		</a>
 {% endblock %}
-
