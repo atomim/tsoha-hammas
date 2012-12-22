@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block nav %}
+	{% if owner %}
+	<li><a>muokkaa</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+		<article>
+			<h1>{{sample.sample_id}}</h1>
+			<section>
+			{% if owner %}
+			<p>teit tämän.</p>
+			{% endif %}
+			<ul>
+				<li>{{sample.date_added}}</li>
+				<li><img src="{{sample.picture.url}}"></li>
+			</ul>
+		</article>
+{% endblock %}

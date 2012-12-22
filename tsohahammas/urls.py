@@ -10,8 +10,16 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', index.Index.as_view(), name='index'),
-    url(r'^group/',include(group.group_patterns)),
+    url(r'^group/',include(group.patterns)),
+    url(r'^sample/',include(sample.patterns)),
     url(r'^login/$', LoginView.as_view(template_name = 'login.html', success_url='/'), name='login'),
     url(r'^logout/','django.contrib.auth.views.logout',{'next_page': '/'},name='logout'),
     url(r'^admin/', include(admin.site.urls)),
 )
+
+from django.conf import settings
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}))

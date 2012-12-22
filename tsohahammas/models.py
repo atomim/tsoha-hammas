@@ -20,4 +20,5 @@ class Sample(models.Model):
      picture = models.ImageField(upload_to="images/")
      adder = models.ForeignKey(User)
      group = models.ForeignKey(Group)
-     
+     def get_absolute_url(self):
+    	return reverse('sampleDetail', args=[str(self.sample_id)])

@@ -12,9 +12,26 @@
 {% block content %}
 		<article>
 			<h1>{{group.name}}</h1>
+			<section>
 			{% if memberStatus %}
 			<p>kuulut ryhmään.</p>
 			{% endif %}
 			<p>{{group.description}}</p>
+			</section>
+			<section>
+				{% for sample in samples %}
+				<a href={{sample.get_absolute_url}}>
+					<article>
+						<h1>{{sample.sample_id}}</h1>
+						<section>
+						<ul>
+							<li>{{sample.date_added}}</li>
+							<li><img src="{{sample.picture.url}}"></li>
+						</ul>
+						</section>
+					</article>
+				</a>
+				{% endfor %}
+			</section>
 		</article>
 {% endblock %}
