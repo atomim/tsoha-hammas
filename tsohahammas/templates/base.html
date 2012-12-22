@@ -6,10 +6,11 @@
 </head>
 <body>
 	<header>
-		<h1><a href="/index.html">Tsohahammas</a></h1>
+		<h1><a href={% url index %}>Tsohahammas</a></h1>
+		{% if user.is_authenticated %}
+		<p>logged in as: {{ user }}</p>
+		{% endif %}
 		{% include "nav.html" %}
-
-		<br>
 	</header>
 
 	<section>

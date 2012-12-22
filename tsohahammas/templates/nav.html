@@ -1,10 +1,10 @@
 <nav>
-     <ul>
-          {{ user }}
-          {% if user.is_authenticated %}
-               <li><a href="/logout/">kirjaudu ulos</a></li>
-          {% else %}
-	          <li><a href="/login/">kirjaudu</a></li>
-	     {% endif %}
+	<ul>
+		<li><a href={% url admin:index %}>admin panel(temporary)</a></li>
+		{% if user.is_authenticated %}
+		<li><a href={% url logout %}>kirjaudu ulos</a></li>
+		{% else %}
+		<li><a href={% url login %}>kirjaudu</a></li>
+		{% endif %}
 	</ul>
 </nav>
