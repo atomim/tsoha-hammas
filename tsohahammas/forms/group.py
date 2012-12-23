@@ -8,9 +8,11 @@ class CreateGroupForm(ModelForm):
 		self.creator = kwargs['initial']['creator']
 		return super(CreateGroupForm, self).__init__(*args, **kwargs)
 	def save(self, *args, **kwargs):
-		self.object = super(CreateGroupForm, self).save(False)
-		self.object.creator = self.creator
-		return self.object.save()
+		obj = super(CreateGroupForm, self).save(False)
+		obj.creator = self.creator
+		if commit:
+			obj.save()
+		return obj
 
 from django.contrib import admin
 class GroupAdmin(admin.ModelAdmin):

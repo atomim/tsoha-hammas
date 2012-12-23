@@ -13,7 +13,8 @@ class GroupSamplesMixin(object):
 class MemberStatusMixin(object):
 	def get_context_data(self, **kwargs):
 		context = super(MemberStatusMixin, self).get_context_data(**kwargs)
-		if super(MemberStatusMixin, self).get_object().members.get(pk=self.request.user.pk):
+		obj=super(MemberStatusMixin, self).get_object()
+		if obj.members.filter(pk=self.request.user.pk).count()==1:
 			context.update({'memberStatus': True})
 		else:
 			context.update({'memberStatus': False})
@@ -32,6 +33,7 @@ class GroupCreate(edit.CreateView):
 	template_name = 'form.html'
 	form_class=group.CreateGroupForm
 	def get_initial(self):
+		super(GroupCreate,self).get_initial()
 		self.initial.update({ 'creator': self.request.user })
 		return self.initial
 
