@@ -6,8 +6,8 @@ class Group(models.Model):
      name = models.CharField(max_length=100)
      description = models.TextField()
      hidden = models.BooleanField()
-     date_created= models.DateTimeField()
-     creator = models.ForeignKey(User)
+     date_created= models.DateTimeField(auto_now_add=True)
+     creator = models.ForeignKey(User, editable=False)
      members = models.ManyToManyField(User,related_name='r_groups')
      def get_absolute_url(self):
     	return reverse('groupDetail', args=[str(self.id)])
@@ -16,7 +16,7 @@ class Group(models.Model):
 
 class Sample(models.Model):
      sample_id= models.AutoField(primary_key=True)
-     date_added= models.DateTimeField()
+     date_added= models.DateTimeField(auto_now_add=True)
      picture = models.ImageField(upload_to="images/")
      adder = models.ForeignKey(User)
      group = models.ForeignKey(Group)

@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*- 
 
-from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import TemplateView, DetailView, ListView, edit
 from utils import *
 from tsohahammas.models import *
 
@@ -20,16 +20,25 @@ class MemberStatusMixin(object):
 		return context
 
 class GroupDetail(GroupSamplesMixin,TitleMixin,MemberStatusMixin,DetailView):
-	title='Ryhmän näytteet'
+	title = 'Ryhmän näytteet'
 	template_name = 'group.html'
 	model = Group
 	
-	
 
+from tsohahammas.forms import *
+from django.core.urlresolvers import reverse
+class GroupCreate(edit.CreateView):
+	model = Group
+	template_name = 'form.html'
+	form_class=group.CreateGroupForm
+	def get_initial(self):
+		self.initial.update({ 'creator': self.request.user })
+		return self.initial
 
 from django.conf.urls import patterns, include, url
+from django.contrib.auth.decorators import login_required
 patterns = patterns('',
-    #url(r'^create/', login_required(CreateGroup.as_view()),name='groupCreate'),
+    url(r'^create/', login_required(GroupCreate.as_view()),name='groupCreate'),
     #url(r'^list/', GroupList.as_view(),name='groupList'),
     url(r'^(?P<pk>\d+)/', GroupDetail.as_view(),name='groupDetail'),
     #url(r'^join/(?P<pk>\d+)/', GroupDetail.as_view(),name='joinGroup')

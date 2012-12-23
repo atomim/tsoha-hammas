@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% block nav %}
+	<li><a href={% url groupCreate %}>lisää ryhmä</a></li>
+{% endblock %}
 
 {% block content %}
 	{% for group in object_list %}
