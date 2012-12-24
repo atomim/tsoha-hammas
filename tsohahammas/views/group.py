@@ -15,9 +15,13 @@ class MemberStatusMixin(object):
 		context = super(MemberStatusMixin, self).get_context_data(**kwargs)
 		obj=super(MemberStatusMixin, self).get_object()
 		if obj.members.filter(pk=self.request.user.pk).count()==1:
-			context.update({'memberStatus': True})
+			context.update({'is_member': True})
 		else:
-			context.update({'memberStatus': False})
+			context.update({'member': False})
+		if obj.creator==self.request.user:
+			context.update({'is_creator': True})
+		else:
+			context.update({'is_creator': False})
 		return context
 
 class GroupDetail(GroupSamplesMixin,TitleMixin,MemberStatusMixin,DetailView):
@@ -32,10 +36,6 @@ class GroupCreate(edit.CreateView):
 	model = Group
 	template_name = 'form.html'
 	form_class=group.CreateGroupForm
-	def get_initial(self):
-		super(GroupCreate,self).get_initial()
-		self.initial.update({ 'creator': self.request.user })
-		return self.initial
 
 from django.conf.urls import patterns, include, url
 from django.contrib.auth.decorators import login_required

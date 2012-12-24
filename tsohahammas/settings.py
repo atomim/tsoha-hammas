@@ -100,6 +100,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'cuser.middleware.CuserMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -115,6 +116,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'tsohahammas',
+    'cuser',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

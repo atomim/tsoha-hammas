@@ -13,7 +13,10 @@
 		<article>
 			<h1>{{group.name}}</h1>
 			<section>
-			{% if memberStatus %}
+			{% if is_member %}
+			<p>perustit tämän ryhmän.</p>
+			{% endif %}
+			{% if is_member %}
 			<p>kuulut ryhmään.</p>
 			{% endif %}
 			<p>{{group.description}}</p>
