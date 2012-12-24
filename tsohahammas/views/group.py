@@ -31,7 +31,6 @@ class GroupDetail(GroupSamplesMixin,TitleMixin,MemberStatusMixin,DetailView):
 	
 
 from tsohahammas.forms import *
-from django.core.urlresolvers import reverse
 class GroupCreate(edit.CreateView):
 	model = Group
 	template_name = 'form.html'

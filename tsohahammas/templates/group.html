@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
 {% block nav %}
-	{% if not memberStatus %}
+	{% if not is_member %}
 	<li><a>liity</a></li>
 	{% else %}
-	<li><a>lisää näyte!</a></li>
+	<li><a href={% url sampleCreate group.id %}>lisää näyte!</a></li>
 	<li><a>eroa ryhmästä</a></li>
+	<li><a>muokkaa</a></li>
+	{% endif %}
+	{% if is_creator%}
+	<li><a>poista ryhmä</a></li>
 	{% endif %}
 {% endblock %}
 
